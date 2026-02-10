@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://cofi0ww3t5r12"]
+
+[ext_resource type="Script" uid="uid://dpjid1m232b15" path="res://scripts/StateMachine.gd" id="1_1bh0b"]
+[ext_resource type="Script" uid="uid://dh3blhmot846y" path="res://scripts/CharacterState.gd" id="2_0p5ti"]
+[ext_resource type="Script" uid="uid://ewj8w72scssc" path="res://scripts/OptionsState.gd" id="3_cr7d6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80b2w"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq61s"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do4jp"]
+region = Rect2(352, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khi0y"]
+region = Rect2(400, 426, 48, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdjit"]
+region = Rect2(459, 411, 42, 42)
+
+[node name="Ui" type="Node2D" unique_id=478735339]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1551631739]
+follow_viewport_enabled = true
+
+[node name="Main" type="Control" parent="CanvasLayer" unique_id=1547888790]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main" unique_id=830009855]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Main/VBoxContainer" unique_id=1170197141]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = -1
+alignment = 1
+
+[node name="CharacterButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer" unique_id=2036304602]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "P"
+icon_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer" unique_id=1816274009]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1891163137]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer" unique_id=198089562]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "O"
+icon_alignment = 1
+
+[node name="CenterDisplayFSM" type="Control" parent="CanvasLayer/Main/VBoxContainer" unique_id=1548901213]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+script = ExtResource("1_1bh0b")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=576405040]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/PanelContainer" unique_id=847282016]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Character" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=405424976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0p5ti")
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character" unique_id=258457045]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_80b2w")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_mq61s")
+tab_alignment = 1
+current_tab = 2
+tabs_position = 1
+clip_tabs = false
+all_tabs_in_front = true
+
+[node name="Character" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character/TabContainer" unique_id=518705704]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Subordinates" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character/TabContainer" unique_id=826887882]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Reputation" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character/TabContainer" unique_id=913054792]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Options" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=196779826]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_cr7d6")
+
+[node name="Gather" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=1544557631]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Train" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=71295051]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Explore" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=2115333928]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=617422655]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Craft" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=475709548]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM" unique_id=1690445636]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Main/VBoxContainer" unique_id=1398132931]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = -1
+alignment = 1
+
+[node name="GatherButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2" unique_id=2129001204]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = SubResource("AtlasTexture_do4jp")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TrainingButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2" unique_id=2096224401]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+icon = SubResource("AtlasTexture_khi0y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ExploreButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2" unique_id=503166674]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 30
+icon = SubResource("AtlasTexture_fdjit")
+icon_alignment = 1
+
+[node name="MapButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2" unique_id=966122336]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 30
+text = "Map"
+icon_alignment = 1
+
+[node name="CraftButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2" unique_id=1094386242]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "C"
+icon_alignment = 1
+
+[node name="ShopButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2" unique_id=1358192402]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "S"
+icon_alignment = 1
+
+[connection signal="button_down" from="CanvasLayer/Main/VBoxContainer/HBoxContainer/CharacterButton" to="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character" method="_on_character_button_down"]
+[connection signal="button_down" from="CanvasLayer/Main/VBoxContainer/HBoxContainer/OptionsButton" to="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Options" method="_on_options_button_down"]
